@@ -12,7 +12,6 @@ Release:	%{release}
 License:	GPL
 Group:		Graphics
 URL:		http://gimp.org
-Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 Source:		ftp://ftp.gimp.org/pub/gimp/plug-ins/v2.2/gap/%pkgname-%{version}.tar.bz2
 Patch: gimp-gap-2.2.0-ffmpeg-pic.patch
