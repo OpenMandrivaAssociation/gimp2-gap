@@ -1,5 +1,5 @@
-%define version 2.4.0
-%define release %mkrel 3
+%define version 2.6.0
+%define release %mkrel 1
 
 %define req_gimp_version 2.2
 
@@ -9,14 +9,14 @@ Summary:	GAP (GIMP Animation Package), a video plug-in for GIMP
 Name:		gimp2-gap
 Version:	%{version}
 Release:	%{release}
-License:	GPL
+License:	GPLv2+
 Group:		Graphics
 URL:		http://gimp.org
 Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 
-Source:		ftp://ftp.gimp.org/pub/gimp/plug-ins/v2.2/gap/%pkgname-%{version}.tar.bz2
-Patch: gimp-gap-2.2.0-ffmpeg-pic.patch
-
+Source:		ftp://ftp.gimp.org/pub/gimp/plug-ins/v2.6/gap/%pkgname-%{version}.tar.bz2
+Patch2:		gimp-gap-2.6.0-libmpeg3-format-strings.patch
+Patch3:		gimp-gap-2.6.0-format-strings.patch
 BuildRequires:	intltool >= 0.17
 BuildRequires:	glib-gettextize
 BuildRequires:	libgimp-devel >= %{req_gimp_version}
@@ -42,11 +42,13 @@ Chapter Advanced Animation.
 %prep
 %setup -q -n %pkgname-%{version}
 cd extern_libs/
-tar xzf ffmpeg.tar.gz
-cd ffmpeg/
-%patch -p1 -b .pic
+tar xzf libmpeg3.tar.gz
+%patch2 -p0
+cd ..
+%patch3 -p1
 
 %build
+%define _disable_ld_no_undefined 1
 %configure2_5x
 make
 
