@@ -45,7 +45,7 @@ cd extern_libs/
 tar xzf libmpeg3.tar.gz
 %patch2 -p0
 cd ..
-%patch3 -p1
+%patch3 -p1 -b .format-strings
 
 %build
 %define _disable_ld_no_undefined 1
