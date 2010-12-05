@@ -1,5 +1,5 @@
 %define version 2.6.0
-%define release %mkrel 2
+%define release %mkrel 3
 
 %define req_gimp_version 2.2
 
