@@ -17,6 +17,7 @@ Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 Source:		ftp://ftp.gimp.org/pub/gimp/plug-ins/v2.6/gap/%pkgname-%{version}.tar.bz2
 Patch2:		gimp-gap-2.6.0-libmpeg3-format-strings.patch
 Patch3:		gimp-gap-2.6.0-format-strings.patch
+Patch4:		gimp-gap-2.6.0-fix-linking.patch
 BuildRequires:	intltool >= 0.17
 BuildRequires:	glib-gettextize
 BuildRequires:	libgimp-devel >= %{req_gimp_version}
@@ -46,6 +47,9 @@ tar xzf libmpeg3.tar.gz
 %patch2 -p0
 cd ..
 %patch3 -p1 -b .format-strings
+%patch4 -p1
+
+autoreconf -fi
 
 %build
 %define _disable_ld_no_undefined 1
