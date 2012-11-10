@@ -1,0 +1,205 @@
+diff -p -up gimp-gap-2.6.0/gap/gap_arr_dialog.c.format-strings gimp-gap-2.6.0/gap/gap_arr_dialog.c
+--- gimp-gap-2.6.0/gap/gap_arr_dialog.c.format-strings	2009-06-04 22:38:03.000000000 +0200
++++ gimp-gap-2.6.0/gap/gap_arr_dialog.c	2009-07-09 17:39:33.000000000 +0200
+@@ -1859,7 +1859,7 @@ gap_arr_msg_win(GimpRunMode run_mode, co
+ 
+        if(run_mode == GIMP_RUN_INTERACTIVE)
+        {
+-         g_message (msg);
++         g_message ("%s", msg);
+        }
+     }
+   }
+diff -p -up gimp-gap-2.6.0/gap/gap_fmac_base.c.format-strings gimp-gap-2.6.0/gap/gap_fmac_base.c
+--- gimp-gap-2.6.0/gap/gap_fmac_base.c.format-strings	2009-06-04 22:38:03.000000000 +0200
++++ gimp-gap-2.6.0/gap/gap_fmac_base.c	2009-07-09 17:39:33.000000000 +0200
+@@ -96,7 +96,7 @@ p_print_and_free_msg(char *msg, GimpRunM
+ {
+   if(run_mode == GIMP_RUN_INTERACTIVE)
+   {
+-    g_message(msg);
++    g_message("%s", msg);
+   }
+   printf("%s\n", msg);
+   g_free(msg);
+diff -p -up gimp-gap-2.6.0/gap/gap_fmac_main.c.format-strings gimp-gap-2.6.0/gap/gap_fmac_main.c
+--- gimp-gap-2.6.0/gap/gap_fmac_main.c.format-strings	2009-06-04 22:38:03.000000000 +0200
++++ gimp-gap-2.6.0/gap/gap_fmac_main.c	2009-07-09 17:39:33.000000000 +0200
+@@ -365,7 +365,7 @@ p_print_and_free_msg(char *msg, GimpRunM
+ {
+   if(run_mode == GIMP_RUN_INTERACTIVE)
+   {
+-    g_message(msg);
++    g_message("%s", msg);
+   }
+   printf("%s\n", msg);
+   g_free(msg);
+diff -p -up gimp-gap-2.6.0/gap/gap_morph_exec.c.format-strings gimp-gap-2.6.0/gap/gap_morph_exec.c
+--- gimp-gap-2.6.0/gap/gap_morph_exec.c.format-strings	2009-06-04 22:38:03.000000000 +0200
++++ gimp-gap-2.6.0/gap/gap_morph_exec.c	2009-07-09 17:39:33.000000000 +0200
+@@ -204,7 +204,7 @@ p_error_message_with_filename(GimpRunMod
+   
+   if(run_mode != GIMP_RUN_NONINTERACTIVE)
+   {
+-    g_message(l_msg);
++    g_message("%s", l_msg);
+   }
+   g_free(l_msg);
+ 
+diff -p -up gimp-gap-2.6.0/gap/gap_split.c.format-strings gimp-gap-2.6.0/gap/gap_split.c
+--- gimp-gap-2.6.0/gap/gap_split.c.format-strings	2009-06-04 22:38:03.000000000 +0200
++++ gimp-gap-2.6.0/gap/gap_split.c	2009-07-09 17:39:33.000000000 +0200
+@@ -346,7 +346,7 @@ p_split_image(GapAnimInfo *ainfo_ptr, sp
+                
+                errMsg = g_strdup_printf(_("failed to overwrite %s (check permissions ?)")
+                                       , l_sav_name);
+-               g_message(errMsg);
++               g_message("%s", errMsg);
+                g_free(errMsg);
+                writePermission = FALSE;
+              }
+diff -p -up gimp-gap-2.6.0/gap/gap_vex_dialog.c.format-strings gimp-gap-2.6.0/gap/gap_vex_dialog.c
+--- gimp-gap-2.6.0/gap/gap_vex_dialog.c.format-strings	2009-06-04 22:38:03.000000000 +0200
++++ gimp-gap-2.6.0/gap/gap_vex_dialog.c	2009-07-09 17:39:33.000000000 +0200
+@@ -912,7 +912,7 @@ on_mw__combo_preferred_decoder  (GtkWidg
+      break;
+  }
+  g_snprintf(gpp->val.preferred_decoder, sizeof(gpp->val.preferred_decoder)
+-               , preferred_decoder
++               , "%s", preferred_decoder
+                );
+  entry = GTK_ENTRY(gpp->mw__entry_preferred_decoder);
+  if(entry)
+diff -p -up gimp-gap-2.6.0/libgapvidutil/gap_gve_sox.c.format-strings gimp-gap-2.6.0/libgapvidutil/gap_gve_sox.c
+--- gimp-gap-2.6.0/libgapvidutil/gap_gve_sox.c.format-strings	2009-06-04 22:38:03.000000000 +0200
++++ gimp-gap-2.6.0/libgapvidutil/gap_gve_sox.c	2009-07-09 17:39:33.000000000 +0200
+@@ -153,7 +153,7 @@ gap_gve_sox_chk_and_resample(GapGveCommo
+                            , cval->tmp_audfile);
+         if(cval->run_mode == GIMP_RUN_INTERACTIVE)
+         {
+-          g_message(l_msg);
++          g_message("%s", l_msg);
+             }
+         return -1;
+      }
+@@ -175,7 +175,7 @@ gap_gve_sox_chk_and_resample(GapGveCommo
+                        );
+        if(cval->run_mode == GIMP_RUN_INTERACTIVE)
+        {
+-         g_message(l_msg);
++         g_message("%s", l_msg);
+            }
+        g_free(l_msg);
+        return -1;
+diff -p -up gimp-gap-2.6.0/vid_common/gap_cme_gui.c.format-strings gimp-gap-2.6.0/vid_common/gap_cme_gui.c
+--- gimp-gap-2.6.0/vid_common/gap_cme_gui.c.format-strings	2009-06-04 22:38:03.000000000 +0200
++++ gimp-gap-2.6.0/vid_common/gap_cme_gui.c	2009-07-09 17:50:39.000000000 +0200
+@@ -2034,7 +2034,7 @@ gap_cme_gui_check_encode_OK (GapCmeGloba
+                          , (int)(gpp->val.vid_width / 16) * 16
+                          , (int)(gpp->val.vid_height / 16) * 16
+                          );
+-      g_message(l_msg);
++      g_message("%s", l_msg);
+       g_free(l_msg);
+       return (FALSE);
+     }
+@@ -2057,7 +2057,7 @@ gap_cme_gui_check_encode_OK (GapCmeGloba
+                             , (int)bits
+                             , gpp->val.audioname1
+                             );
+-         g_message(l_msg);
++         g_message("%s", l_msg);
+          g_free(l_msg);
+          return (FALSE);
+        }
+@@ -2076,7 +2076,7 @@ gap_cme_gui_check_encode_OK (GapCmeGloba
+                             "file: %s\n")
+                             , gpp->val.audioname1
+                             );
+-         g_message(l_msg);
++         g_message("%s", l_msg);
+          g_free(l_msg);
+          return (FALSE);
+     }
+@@ -2100,7 +2100,7 @@ gap_cme_gui_check_encode_OK (GapCmeGloba
+                                 "supported rates: \n"
+                                 " 22050, 24000, 32000, 44100, 48000")
+                                 , (int)gpp->val.samplerate);
+-             g_message(l_msg);
++             g_message("%s", l_msg);
+              g_free(l_msg);
+              return (FALSE);
+              break;
+@@ -2128,7 +2128,7 @@ gap_cme_gui_check_encode_OK (GapCmeGloba
+                                 "supported rates:\n"
+                                 " 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000")
+                                 , (int)gpp->val.samplerate);
+-             g_message(l_msg);
++             g_message("%s", l_msg);
+              g_free(l_msg);
+              return (FALSE);
+              break;
+@@ -3928,7 +3928,7 @@ p_call_encoder_procedure(GapCmeGlobalPar
+      l_msg = g_strdup_printf(_("Required Plugin %s not available"), gpp->val.ecp_sel.vid_enc_plugin);
+      if(gpp->val.run_mode == GIMP_RUN_INTERACTIVE)
+      {
+-       g_message(l_msg);
++       g_message("%s", l_msg);
+      }
+      g_free(l_msg);
+      return -1;
+@@ -3980,7 +3980,7 @@ p_call_encoder_procedure(GapCmeGlobalPar
+      l_msg = g_strdup_printf(_("Call of Required Plugin %s failed"), gpp->val.ecp_sel.vid_enc_plugin);
+      if(gpp->val.run_mode == GIMP_RUN_INTERACTIVE)
+      {
+-       g_message(l_msg);
++       g_message("%s", l_msg);
+      }
+      g_free(l_msg);
+   }
+diff -p -up gimp-gap-2.6.0/vid_enc_ffmpeg/gap_enc_ffmpeg_callbacks.c.format-strings gimp-gap-2.6.0/vid_enc_ffmpeg/gap_enc_ffmpeg_callbacks.c
+--- gimp-gap-2.6.0/vid_enc_ffmpeg/gap_enc_ffmpeg_callbacks.c.format-strings	2009-06-04 22:38:03.000000000 +0200
++++ gimp-gap-2.6.0/vid_enc_ffmpeg/gap_enc_ffmpeg_callbacks.c	2009-07-09 17:39:33.000000000 +0200
+@@ -96,7 +96,7 @@ on_ff_response (GtkWidget *widget,
+         {
+             l_msg = g_strdup_printf("Error:\nWidth (%d) must be an integer multiple of 2",
+                                  (int)gpp->val.vid_width);
+-           g_message(l_msg);
++           g_message("%s", l_msg);
+            g_free(l_msg);
+            return;
+         }
+@@ -104,7 +104,7 @@ on_ff_response (GtkWidget *widget,
+         {
+             l_msg = g_strdup_printf("Error:\nHeight (%d) must be an integer multiple of 2",
+                                (int)gpp->val.vid_height);
+-            g_message(l_msg);
++            g_message("%s", l_msg);
+             g_free(l_msg);
+             return;
+         }
+diff -p -up gimp-gap-2.6.0/vid_enc_ffmpeg/gap_enc_ffmpeg_main.c.format-strings gimp-gap-2.6.0/vid_enc_ffmpeg/gap_enc_ffmpeg_main.c
+--- gimp-gap-2.6.0/vid_enc_ffmpeg/gap_enc_ffmpeg_main.c.format-strings	2009-06-04 22:38:03.000000000 +0200
++++ gimp-gap-2.6.0/vid_enc_ffmpeg/gap_enc_ffmpeg_main.c	2009-07-09 17:51:20.000000000 +0200
+@@ -1028,9 +1028,9 @@ gap_enc_ffmpeg_main_init_preset_params(G
+     printf("gap_enc_ffmpeg_main_init_preset_params L_IDX:%d\n", (int)l_idx);
+   }
+ 
+-  g_snprintf(epp->format_name, sizeof(epp->format_name), tab_format_name[l_idx]);   /* "avi" */
+-  g_snprintf(epp->vcodec_name, sizeof(epp->vcodec_name), tab_vcodec_name[l_idx]);   /* "msmpeg4" */
+-  g_snprintf(epp->acodec_name, sizeof(epp->acodec_name), tab_acodec_name[l_idx]);   /* "mp2" */
++  g_snprintf(epp->format_name, sizeof(epp->format_name), "%s", tab_format_name[l_idx]);   /* "avi" */
++  g_snprintf(epp->vcodec_name, sizeof(epp->vcodec_name), "%s", tab_vcodec_name[l_idx]);   /* "msmpeg4" */
++  g_snprintf(epp->acodec_name, sizeof(epp->acodec_name), "%s", tab_acodec_name[l_idx]);   /* "mp2" */
+ 
+ 
+   epp->pass_nr             = 1;
+@@ -2392,7 +2392,7 @@ p_init_and_open_audio_codec(t_ffmpeg_han
+     }
+     else
+     {
+-       g_message(msg);
++       g_message("%s", msg);
+     }
+     g_free(msg);
+   }
