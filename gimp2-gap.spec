@@ -3,7 +3,7 @@
 Summary:	GAP (GIMP Animation Package), a video plug-in for GIMP
 Name:		gimp2-gap
 Version:	2.6.0
-Release:	6
+Release:	7
 License:	GPLv2+
 Group:		Graphics
 Url:		http://gimp.org
