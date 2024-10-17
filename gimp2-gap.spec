@@ -6,7 +6,7 @@ Version:	2.6.0
 Release:	7
 License:	GPLv2+
 Group:		Graphics
-Url:		http://gimp.org
+Url:		https://gimp.org
 Source0:	ftp://ftp.gimp.org/pub/gimp/plug-ins/v2.6/gap/%{pkgname}-%{version}.tar.bz2
 Patch2:		gimp-gap-2.6.0-libmpeg3-format-strings.patch
 Patch3:		gimp-gap-2.6.0-format-strings.patch
