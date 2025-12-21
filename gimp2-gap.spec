@@ -11,6 +11,11 @@ Source0:	ftp://ftp.gimp.org/pub/gimp/plug-ins/v2.6/gap/%{pkgname}-%{version}.tar
 Patch2:		gimp-gap-2.6.0-libmpeg3-format-strings.patch
 Patch3:		gimp-gap-2.6.0-format-strings.patch
 Patch4:		gimp-gap-2.6.0-fix-linking.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	glib-gettextize
 BuildRequires:	intltool >= 0.17
 BuildRequires:	jpeg-devel
